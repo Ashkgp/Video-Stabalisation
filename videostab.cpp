@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 {
 
 
-	VideoCapture cap;
+	VideoCapture cap(0);
 	Mat cur, cur_grey;
 	Mat prev, prev_grey;
 
@@ -68,8 +68,7 @@ int main(int argc, char **argv)
 	int max_frames = cap.get(CV_CAP_PROP_FRAME_COUNT);
 	Mat last_T;
 	Mat prev_grey_,cur_grey_;
-	cap.open(0);
-	assert(cap.isOpen());
+	assert(cap.isOpened());
 	outputVideo.open("compare.avi" , CV_FOURCC('X','V','I','D'), 24,cvSize(cur.rows, cur.cols*2+10), true); 
 	 
 	while(true) {
