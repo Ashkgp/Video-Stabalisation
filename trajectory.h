@@ -61,10 +61,4 @@ struct Trajectory
 const int SMOOTHING_RADIUS = 5; // In frames. The larger the more stable the video, but less reactive to sudden panning
 const int HORIZONTAL_BORDER_CROP = 20; // In pixels. Crops the border to reduce the black borders from stabilisation being too noticeable.
 
-// For further analysis
-ofstream out_transform("prev_to_cur_transformation.txt");
-ofstream out_trajectory("trajectory.txt");
-ofstream out_smoothed_trajectory("smoothed_trajectory.txt");
-ofstream out_new_transform("new_prev_to_cur_transformation.txt");
-
 #endif
