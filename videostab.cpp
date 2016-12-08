@@ -171,28 +171,14 @@ int main(int argc, char **argv)
 
 		cur2 = cur2(Range(vert_border, cur2.rows-vert_border), Range(HORIZONTAL_BORDER_CROP, cur2.cols-HORIZONTAL_BORDER_CROP));
 
-		// Resize cur2 back to cur size, for better side by side comparison
-		resize(cur2, cur2, cur.size());
-
-		// Now draw the original and stablised side by side for coolness
-		Mat canvas = Mat::zeros(cur.rows, cur.cols*2+10, cur.type());
-
-		prev.copyTo(canvas(Range::all(), Range(0, cur2.cols)));
-		cur2.copyTo(canvas(Range::all(), Range(cur2.cols+10, cur2.cols*2+10)));
-
-		// If too big to fit on the screen, then scale it down by 2, hopefully it'll fit :)
-		if(canvas.cols > 1920) {
-			resize(canvas, canvas, Size(canvas.cols/2, canvas.rows/2));
-		}
-		//outputVideo<<canvas;
-		imshow("before and after", canvas);
-
+		imshow("original",prev);
+		imshow("Stab",cur2);
 		waitKey(10);
 		//
 		prev = cur.clone();//cur.copyTo(prev);
 		cur_grey.copyTo(prev_grey);
 
-		cout << "Frame: " << k << "/" << max_frames << " - good optical flow: " << prev_corner2.size() << endl;
+		//cout << "Frame: " << k << "/" << max_frames << " - good optical flow: " << prev_corner2.size() << endl;
 		k++;
 
 	}
